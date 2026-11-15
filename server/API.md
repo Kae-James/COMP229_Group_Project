@@ -15,7 +15,7 @@ npm run dev            # nodemon, http://localhost:5000
 
 ## Auth
 
-Protected routes need `Authorization: Bearer <token>`. The Security Programmer is building `/api/auth` (`POST /register`, `POST /login`, `GET /logout`), so the login response format is still TBD. Until their `protect` middleware is merged, every protected route returns `401`.
+Protected routes require `Authorization: Bearer <token>`. `POST /api/auth/register` and `POST /api/auth/login` return `{ token, user: { _id, name, email, role } }` on success. Registration creates a regular user and stores the password as a bcrypt hash. `GET /api/auth/logout` requires a valid token and returns `{ message: "Logged out" }`; the client should then remove its stored token. The `protect` middleware verifies the token and sets `req.user = { id, role }`. The `adminOnly` middleware restricts admin-only user routes.
 
 ## Endpoints
 
