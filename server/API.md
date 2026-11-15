@@ -15,7 +15,18 @@ npm run dev            # nodemon, http://localhost:5000
 
 ## Auth
 
-Protected routes need `Authorization: Bearer <token>`. The Security Programmer is building `/api/auth` (`POST /register`, `POST /login`, `GET /logout`), so the login response format is still TBD. Until their `protect` middleware is merged, every protected route returns `401`.
+Protected routes need `Authorization: Bearer <token>`. The Security Programmer is building `/api/auth` (`POST /register`, `POST /login`, `GET /logout`). Until their `protect` middleware is merged, every protected route returns `401`.
+
+Proposed login response (waiting for the Security Programmer to confirm):
+
+```json
+{
+  "token": "<JWT, expires in 1 day>",
+  "user": { "_id": "...", "name": "...", "email": "...", "role": "user" }
+}
+```
+
+The password is never returned by any route.
 
 ## Endpoints
 
