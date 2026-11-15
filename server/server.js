@@ -11,7 +11,7 @@ app.use(express.json());
 // Public health check
 app.get("/api/health", (req, res) => res.json({ status: "ok" }));
 
-// TODO (Security Programmer): app.use("/api/auth", require("./routes/auth.routes"));
+app.use("/api/auth", require("./routes/auth.routes"));
 app.use("/api/users", require("./routes/user.routes"));
 app.use("/api/workouts", require("./routes/workout.routes"));
 app.use("/api/sleep", require("./routes/sleep.routes"));
